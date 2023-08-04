@@ -32,11 +32,11 @@ const Home = () => {
 
     // post mongo server
     axios
-      .post("http://localhost:5000/tasks", newClass)
+      .post("https://task-management-server-woad.vercel.app/tasks", newClass)
       .then((res) => {
         console.log("successfully posted:", res);
         if (res.data.insertedId) {
-          toast('Successfully added Task');
+          toast("Successfully added Task");
         }
       })
       .catch((error) => {

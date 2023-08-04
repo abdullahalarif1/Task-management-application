@@ -12,26 +12,27 @@ const UpdateTask = () => {
   } = useForm();
   console.log(loader);
 
-   
-  
   const handleUpdate = (data) => {
-     const updateTask = {
-       title: data.title,
-       description: data.description,
-       status: data.status,
-      
-     };
-     console.log(updateTask);
+    const updateTask = {
+      title: data.title,
+      description: data.description,
+      status: data.status,
+      date: loader?.date,
+    };
+    console.log(updateTask);
 
-     // update task
-     axios.put(`http://localhost:5000/tasks/${loader._id}`, updateTask)
-     .then(res => {
-      if(res.data.modifiedCount > 0){
-        toast('Task Updated Successfully!!!')
-      }
-     })
-  }
-
+    // update task
+    axios
+      .put(
+        `https://task-management-server-woad.vercel.app/tasks/${loader._id}`,
+        updateTask
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          toast("Task Updated Successfully!!!");
+        }
+      });
+  };
 
   return (
     <div className="bg-color min-h-screen pt-20 px-5 md:p-24">

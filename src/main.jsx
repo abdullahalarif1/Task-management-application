@@ -24,7 +24,9 @@ const router = createBrowserRouter([
         path: "/updateTask/:id",
         element: <UpdateTask />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(
+            `https://task-management-server-woad.vercel.app/tasks/${params.id}`
+          ),
       },
     ],
   },

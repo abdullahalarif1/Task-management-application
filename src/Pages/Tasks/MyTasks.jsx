@@ -10,23 +10,25 @@ const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/tasks").then((res) => {
-      setTasks(res.data);
-    });
+    axios
+      .get("https://task-management-server-woad.vercel.app/tasks")
+      .then((res) => {
+        setTasks(res.data);
+      });
   }, []);
 
   // Handle Delete
   const handleDelete = (_id) => {
-    axios.delete(`http://localhost:5000/tasks/${_id}`)
-    .then((res) => {
-      if (res.data.deletedCount > 0) {
-        toast('Deleted Successfully')
-        const remaining = tasks.filter((t) => t._id !== _id);
-        setTasks(remaining);
-      }
-    });
+    axios
+      .delete(`https://task-management-server-woad.vercel.app/tasks/${_id}`)
+      .then((res) => {
+        if (res.data.deletedCount > 0) {
+          toast("Deleted Successfully");
+          const remaining = tasks.filter((t) => t._id !== _id);
+          setTasks(remaining);
+        }
+      });
   };
-
 
   return (
     <div className="bg-color min-h-screen  pt-32 md:p-24">
